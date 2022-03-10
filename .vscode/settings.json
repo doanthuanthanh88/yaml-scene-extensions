@@ -3,6 +3,7 @@
     "files.autoSave": "off",
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
+    "npm.packageManager": "auto",
     "files.exclude": {
         // "**/.git": true,
         // "**/.svn": true,
@@ -16,5 +17,10 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.organizeImports": false,
-    }
+    },
+    "typescript.tsc.autoDetect": "off",
+    "grunt.autoDetect": "off",
+    "jake.autoDetect": "off",
+    "gulp.autoDetect": "off",
+    "npm.autoDetect": "off"
 }
