@@ -1,5 +1,13 @@
-# yaml-scene-extensions
-A template to create a new extension in yaml scene
+# yaml-scene-extension
+A template for yaml-scene extension
+
+# Setup project information
+1. Update extension information in package.json
+2. Run file [setup.sh](./setup.sh) to replace project information to all of template files
+
+```sh
+  ./setup.sh
+```
 
 # Implementation
 
@@ -30,33 +38,45 @@ Example [Translator](./src/Translator.ts)
 ```
 
 # Write document
-The project support auto generate document base on comment line in code.
+This project template support auto generate document base on comment line in code.
 
-1. Write extension information
+1. Write extension information. [Learn more](https://github.com/doanthuanthanh88/yaml-scene/blob/main/GUIDE.md#Doc~GuideMD)
 
     ```js
     /**
-     * yaml-scene-extension~Translator
-    * @description Translate hello text to vietnamese
-    * @group extension
-    * @order 
-    * @example
+      * yaml-scene-extension~Translator
+      * @description Translate hello text to vietnamese
+      * @group extension
+      * @order 
+      * @example
     - yaml-scene-extension~Translator:
         text: hello
         var: result
     - Echo: ${result}
-    */
+      */
     export class Translator implements IElement { ... }
     ```
 
 2. Run `yarn run doc` or `npm run doc` 
-3. A file `GUIDE.md` will be generate to root folder
+3. A file [GUIDE.md](./GUIDE.md) will be generate to root folder
 
 # Test extension via jest
 The project use `jest` to test project.
 
 1. Write testing files to `test/`.  
-2. Run `yarn test` or `npm test` to test
+2. There are 2 options to run test
+    - **Only test** 
+      ```sh
+        yarn test 
+        # OR 
+        npm test
+      ```
+    - **Test & Debug** 
+      ```sh
+        yarn test:debug
+        # OR 
+        npm run test:debug
+      ```
 
 # Test extension via yaml-scene
 The project allow inject extension into yaml-scene global.
