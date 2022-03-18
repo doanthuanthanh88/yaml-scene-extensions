@@ -1,17 +1,17 @@
-import { merge } from "lodash";
+import merge from "lodash.merge";
 import { ElementProxy } from "yaml-scene/src/elements/ElementProxy"
 import { IElement } from "yaml-scene/src/elements/IElement";
 
 /**
- * yaml-scene-extension~Translator
+ * yaml-scene-extension/Translator
  * @description Translate hello text to vietnamese
  * @example
-- yaml-scene-extension~Translator:
+- yaml-scene-extension/Translator:
     text: hello
     var: result
 - Echo: ${result}
  */
-export class Translator implements IElement {
+export default class Translator implements IElement {
   // Element proxy which provide some functions to handle context
   proxy: ElementProxy<any>
 

@@ -14,11 +14,9 @@ A template for yaml-scene extension
 Example [Translator](./src/Translator.ts)
 
 ```ts
-  export class YourExtension implements IElement { 
+  export default class YourExtension implements IElement { 
     // Proxy object which provides some utils functions (logger...)
     proxy?: ElementProxy<any>
-    async?: boolean
-    delay?: number
 
     // Init properties from yaml to object
     init?(props: any){}
@@ -40,16 +38,16 @@ Example [Translator](./src/Translator.ts)
 # Write document
 This project template support auto generate document base on comment line in code.
 
-1. Write extension information. [Learn more](https://github.com/doanthuanthanh88/yaml-scene/blob/main/GUIDE.md#Doc~GuideMD)
+1. Write extension information. [Learn more](https://github.com/doanthuanthanh88/yaml-scene/blob/main/GUIDE.md#Doc/Guide/MD)
 
     ```js
     /**
-      * yaml-scene-extension~Translator
+      * yaml-scene-extension/Translator
       * @description Translate hello text to vietnamese
-      * @group extension
+      * @group Extension
       * @order 
       * @example
-    - yaml-scene-extension~Translator:
+    - yaml-scene-extension/Translator:
         text: hello
         var: result
     - Echo: ${result}

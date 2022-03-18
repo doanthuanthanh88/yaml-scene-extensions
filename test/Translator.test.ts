@@ -1,14 +1,16 @@
-import { VarManager } from "yaml-scene/src/singleton/VarManager"
+import { join } from "path"
 import { Simulator } from "yaml-scene/src/Simulator"
+import { Scenario } from "yaml-scene/src/singleton/Scenario"
 
 describe('Unit test extension', () => {
+  let scenario: Scenario
 
   beforeAll(async () => {
-    await Simulator.Run(`
+    scenario = await Simulator.Run(`
 extensions:
-  - ${require.resolve('../src/Translator')}
+  yaml-scene-extension: ${join(__dirname, '../src')}
 steps:
-  - Translator:
+  - yaml-scene-extension/Translator:
       text: hello
       lang: vi
       var: 
@@ -18,13 +20,13 @@ steps:
   })
 
   test('Check value via object reference', () => {
-    const trans = VarManager.Instance.vars.trans
+    const trans = scenario.variableManager.vars.trans
     // Check object here
     expect(trans.result).toBe('Xin chào')
   })
 
   test('Check value via environment variables', () => {
-    expect(VarManager.Instance.vars.translatedText).toBe('Xin chào')
+    expect(scenario.variableManager.vars.translatedText).toBe('Xin chào')
   })
 
 })
