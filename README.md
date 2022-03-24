@@ -14,6 +14,8 @@ A template for yaml-scene extension
 Example [Translator](./src/Translator.ts)
 
 ```ts
+  import { IElement } from "yaml-scene/src/elements/IElement"
+
   export default class YourExtension implements IElement { 
     // Proxy object which provides some utils functions (logger...)
     proxy?: ElementProxy<any>
@@ -25,7 +27,7 @@ Example [Translator](./src/Translator.ts)
     prepare?(){}
 
     // Execute main flow
-    exec?(){}
+    exec(){}
 
     // After executed done need dispose object
     dispose?(){}
@@ -57,6 +59,8 @@ This project template support auto generate document base on comment line in cod
 
 2. Run `yarn run doc` or `npm run doc` 
 3. A file [GUIDE.md](./GUIDE.md) will be generate to root folder
+
+> Replace `README.template.md` to `README.md` then update information
 
 # Test extension via jest
 The project use `jest` to test project.
