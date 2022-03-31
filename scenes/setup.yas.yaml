@@ -1,0 +1,47 @@
+title: Setup a new project
+steps:
+  - UserInput:
+      - title: Package name
+        var: name
+        required: true
+      - title: Description
+        var: description
+        default: ''
+      - title: Github URL
+        var: gitURL
+      - title: author name
+        var: authorName
+      - title: author email
+        var: authorEmail
+
+  - File/Writer:
+      path: ../setup/info.json
+      adapters:
+        - Json
+      content: 
+        name: ${name}
+        description: ${description}
+        gitURL: ${gitURL}
+        authorName: ${authorName}
+        authorEmail: ${authorEmail}
+        
+  - Echo/Yellow: Setting up...
+
+  - Script/Sh:
+      content: |
+        mv ./README.md ./HOW_TO_DEV.md
+        npx ejs .devcontainer/devcontainer.json -o .devcontainer/devcontainer.json -f ./setup/info.json
+        npx ejs ./setup/README.md -o ./README.md -f ./setup/info.json
+        npx ejs ./setup/schema.json -o schema.json -f ./setup/info.json
+        npx ejs ./setup/package.json -o package.json -f ./setup/info.json
+
+        rm -rf ./setup
+        rm ./scenes/setup.yas.yaml
+      
+  - Script/Js:
+      content: !function |
+        let rs = require('fs').readFileSync('package.json').toString()
+        rs = rs.replace(/(\n|\r)\s+"setup": ".+/m, '')
+        require('fs').writeFileSync('package.json', rs)
+
+  - Echo/Green: Done

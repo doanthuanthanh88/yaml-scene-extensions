@@ -19,8 +19,13 @@
         "source.organizeImports": false,
     },
     "typescript.tsc.autoDetect": "off",
-    "grunt.autoDetect": "off",
-    "jake.autoDetect": "off",
-    "gulp.autoDetect": "off",
-    "npm.autoDetect": "off"
+    "npm.autoDetect": "off",
+    "yaml.customTags": [
+        "!fragment scalar",
+        "!function scalar",
+        "!tag mapping"
+    ],
+    "yaml.schemas": {
+        "/home/node/.config/yarn/global/node_modules/yaml-scene/schema.yas.json": "*.yas.yaml",
+    }
 }

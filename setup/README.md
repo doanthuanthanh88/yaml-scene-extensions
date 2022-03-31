@@ -1,5 +1,5 @@
-# yaml-scene-extension
-A template for yaml-scene extension
+# <%=name%>
+<%=description%>
 
 > It's an extension for `yaml-scene`  
 
@@ -19,7 +19,7 @@ A template for yaml-scene extension
 ## Installation
 
 ```sh
-  yas add yaml-scene-extension        # npm install -g yaml-scene-extension OR yard global add yaml-scene-extension
+  yas add <%=name%>        # npm install -g <%=name%> OR yard global add <%=name%>
 ```
 
 ## Example
@@ -29,7 +29,7 @@ A template for yaml-scene extension
 Translate hello text to vietnamese
 
 ```yaml
-- yaml-scene-extension/Translator:
+- <%=name%>/Translator:
     text: hello
     lang: vi
     var: translatedText

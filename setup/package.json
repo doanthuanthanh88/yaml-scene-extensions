@@ -1,14 +1,13 @@
 {
-  "name": "yaml-scene-extension",
+  "name": "<%=name%>",
   "version": "1.0.0",
-  "description": "A template for yaml-scene extension",
+  "description": "<%=description%>",
   "keywords": [
     "yaml-scene",
     "extensions",
     "dev"
   ],
   "scripts": {
-    "setup": "npx yaml-scene scenes/setup.yas.yaml",
     "install:dist": "yarn install --production --modules-folder ./dist/node_modules",
     "dev": "npx nodemon --watch src --watch test --ext .ts --exec 'node -r ts-node/register -r ./bin/tsconfig-paths-bootstrap.js --inspect-brk src/index.ts'",
     "test": "npx jest --detectOpenHandles",
@@ -39,16 +38,16 @@
     "yaml-scene": "^1.1.0"
   },
   "author": {
-    "name": "Đoàn Thuận Thành",
-    "email": "doanthuanthanh88@gmail.com"
+    "name": "<%=authorName%>",
+    "email": "<%=authorEmail%>"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/doanthuanthanh88/yaml-scene-extensions"
+    "url": "<%=gitURL%>"
   },
   "bugs": {
-    "url": "https://github.com/doanthuanthanh88/yaml-scene-extensions/issues",
-    "email": "doanthuanthanh88@gmail.com"
+    "url": "<%=gitURL%>/issues",
+    "email": "<%=authorEmail%>"
   }
 }

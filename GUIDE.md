@@ -3,11 +3,12 @@
 | Element | Description |  
 |---|---|  
 | --- | --- |
-|[yaml-scene-extension/Translator](#yaml-scene-extension/Translator)| Translate hello text to vietnamese ...|  
+|[yaml-scene-extension/Translator](#yaml-scene-extension%2FTranslator)| Translate hello text to vietnamese ...|  
   
   
 # Details
-## yaml-scene-extension/Translator <a name="yaml-scene-extension/Translator"></a>
+## yaml-scene-extension/Translator <a name="yaml-scene-extension%2FTranslator"></a>  
+`(undefined)`  
 Translate hello text to vietnamese  
 
 ```yaml
@@ -17,5 +18,6 @@ Translate hello text to vietnamese
 - Echo: ${result}
 ```
 
+<br/>
 
   

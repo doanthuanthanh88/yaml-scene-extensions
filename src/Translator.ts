@@ -1,15 +1,18 @@
 import merge from "lodash.merge";
-import { ElementProxy } from "yaml-scene/src/elements/ElementProxy"
+import { ElementProxy } from "yaml-scene/src/elements/ElementProxy";
 import { IElement } from "yaml-scene/src/elements/IElement";
+import { TraceError } from "yaml-scene/src/utils/error/TraceError";
 
 /**
- * yaml-scene-extension/Translator
+ * @guide 
+ * @name yaml-scene-extension/Translator
  * @description Translate hello text to vietnamese
  * @example
 - yaml-scene-extension/Translator:
     text: hello
     var: result
 - Echo: ${result}
+ * @end
  */
 export default class Translator implements IElement {
   // Element proxy which provide some functions to handle context
@@ -28,17 +31,17 @@ export default class Translator implements IElement {
   }
 
   // Prehandle data before execute
-  prepare() {
+  async prepare() {
     // Replace variable to value if it's declared in the input text
-    this.text = this.proxy.getVar(this.text)
+    this.text = await this.proxy.getVar(this.text)
     if (!this.lang) this.lang = 'vi'
   }
 
-  exec() {
+  async exec() {
     // Translate here
     this.result = this.translate(this.text, this.lang)
     if (this.var) {
-      this.proxy.setVar(this.var, this, 'result')
+      await this.proxy.setVar(this.var, { result: this.result }, 'result')
     }
   }
 
@@ -48,7 +51,7 @@ export default class Translator implements IElement {
       case 'xin chào':
         return lang === 'vi' ? 'Xin chào' : 'Hello'
     }
-    throw new Error('We not supported this text yet')
+    throw new TraceError('We not supported this text yet', { txt, lang })
   }
 
   dispose() {

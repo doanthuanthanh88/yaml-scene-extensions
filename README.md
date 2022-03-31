@@ -1,16 +1,17 @@
 # yaml-scene-extension
 A template for yaml-scene extension
 
-# Setup project information
-1. Update extension information in package.json
-2. Run file [setup.sh](./setup.sh) to replace project information to all of template files
+# How to use
+
+Run the below command to setup project
 
 ```sh
-  ./setup.sh
+  npm run setup
 ```
 
 # Implementation
 
+Create a element implement `IElement`.  
 Example [Translator](./src/Translator.ts)
 
 ```ts
@@ -40,11 +41,12 @@ Example [Translator](./src/Translator.ts)
 # Write document
 This project template support auto generate document base on comment line in code.
 
-1. Write extension information. [Learn more](https://github.com/doanthuanthanh88/yaml-scene/blob/main/GUIDE.md#Doc/Guide/MD)
+1. Write extension information. [Learn more](https://github.com/doanthuanthanh88/yaml-scene/blob/main/GUIDE.md#docguidemd-)
 
     ```js
     /**
-      * yaml-scene-extension/Translator
+      * @group
+      * @name yaml-scene-extension/Translator
       * @description Translate hello text to vietnamese
       * @group Extension
       * @order 
@@ -53,14 +55,16 @@ This project template support auto generate document base on comment line in cod
         text: hello
         var: result
     - Echo: ${result}
+      * @end
       */
     export class Translator implements IElement { ... }
     ```
 
-2. Run `yarn run doc` or `npm run doc` 
+2. Run command to generate to guideline document
+```sh
+  npm run doc
+```
 3. A file [GUIDE.md](./GUIDE.md) will be generate to root folder
-
-> Replace `README.template.md` to `README.md` then update information
 
 # Test extension via jest
 The project use `jest` to test project.
@@ -69,14 +73,10 @@ The project use `jest` to test project.
 2. There are 2 options to run test
     - **Only test** 
       ```sh
-        yarn test 
-        # OR 
         npm test
       ```
     - **Test & Debug** 
       ```sh
-        yarn test:debug
-        # OR 
         npm run test:debug
       ```
 
