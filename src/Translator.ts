@@ -16,7 +16,9 @@ import { TraceError } from "yaml-scene/src/utils/error/TraceError";
  */
 export default class Translator implements IElement {
   // Element proxy which provide some functions to handle context
-  proxy: ElementProxy<any>
+  proxy: ElementProxy<this>
+  $$: IElement
+  $: this
 
   text: string
   lang: 'en' | 'vi'
@@ -33,7 +35,7 @@ export default class Translator implements IElement {
   // Prehandle data before execute
   async prepare() {
     // Replace variable to value if it's declared in the input text
-    this.text = await this.proxy.getVar(this.text)
+    this.proxy.applyVars(this, 'text', 'lang') // or this.text = await this.proxy.getVar(this.text)
     if (!this.lang) this.lang = 'vi'
   }
 
@@ -45,7 +47,7 @@ export default class Translator implements IElement {
     }
   }
 
-  private translate(txt, lang) {
+  private translate(txt: string, lang: string) {
     switch (txt) {
       case 'hello':
       case 'xin chào':
