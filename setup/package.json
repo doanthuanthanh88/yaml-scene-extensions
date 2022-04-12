@@ -8,13 +8,12 @@
     "dev"
   ],
   "scripts": {
-    "install:dist": "yarn install --production --modules-folder ./dist/node_modules",
     "dev": "ts-node-dev --clear --rs --project tsconfig.json --ignore-watch [.*] --respawn --transpile-only -r tsconfig-paths/register --inspect-brk -- src/index.ts",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest",
     "doc": "npx yaml-scene scenes/guide.yas.yaml",
-    "prebuild": "yarn clean",
     "lint": "tsc --project tsconfig.lint.json",
+    "prebuild": "yarn clean",
     "build": "tsc --project tsconfig.build.json",
     "postbuild": "node bin/tsconfig && node bin/update_package",
     "clean": "rm -rf dist",

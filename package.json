@@ -9,13 +9,12 @@
   ],
   "scripts": {
     "setup": "npx yaml-scene scenes/setup.yas.yaml",
-    "install:dist": "yarn install --production --modules-folder ./dist/node_modules",
     "dev": "ts-node-dev --clear --rs --project tsconfig.json --ignore-watch [.*] --respawn --transpile-only -r tsconfig-paths/register --inspect-brk -- src/index.ts",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest",
     "doc": "npx yaml-scene scenes/guide.yas.yaml",
-    "prebuild": "yarn clean",
     "lint": "tsc --project tsconfig.lint.json",
+    "prebuild": "yarn clean",
     "build": "tsc --project tsconfig.build.json",
     "postbuild": "node bin/tsconfig && node bin/update_package",
     "clean": "rm -rf dist",
@@ -28,7 +27,7 @@
     "lodash.merge": "^4.6.2"
   },
   "peerDependencies": {
-    "yaml-scene": "^1.1.11"
+    "yaml-scene": "^1.1.16"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
@@ -40,7 +39,7 @@
     "tsconfig-paths": "^3.14.1",
     "typescript": "^4.3.5",
     "weak-napi": "^2.0.2",
-    "yaml-scene": "^1.1.11"
+    "yaml-scene": "^1.1.16"
   },
   "author": {
     "name": "Đoàn Thuận Thành",
